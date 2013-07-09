@@ -35,3 +35,9 @@
 # For Sublime Text
 *.sublime-project
 *.sublime-workspace
+
+hustreport/*.cls
+hustreport/*.bst
+hustreport/*.tex
+hustreport/*.bib
+hustreport/*.md
