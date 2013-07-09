@@ -1,0 +1,289 @@
+% \iffalse meta-comment
+% !TEX program  = LuaLaTeX
+%
+% hustreport.dtx
+%
+% Copyright (C) 2013 by Xu Cheng <xucheng@me.com>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Xu Cheng.
+%
+% This work consists of the files hustreport.dtx,
+% hustreport.ins and the derived file hustreport.cls 
+% along with its documnet and example files.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{hustreport.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class>\ProvidesClass{hustreport}
+%<*class>
+[2013/07/01 v1.0 A Report Template for Huazhong University of Science and Technology]
+%</class>
+%
+%<*driver>
+\documentclass[12pt,a4paper,numbered,full]{l3doc}
+
+\usepackage{fontspec}
+\setmainfont[Ligatures={Common,TeX}]{Tex Gyre Pagella}
+\setsansfont[Ligatures={Common,TeX}]{Droid Sans}
+\setmonofont{CMU Typewriter Text}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+
+\usepackage{luatexja-fontspec}
+\setmainjfont[BoldFont={AdobeHeitiStd-Regular},ItalicFont={AdobeKaitiStd-Regular}]{AdobeSongStd-Light}
+\setsansjfont{AdobeKaitiStd-Regular}
+\defaultjfontfeatures{JFM=kaiming}
+\newjfontfamily\KAI{AdobeKaitiStd-Regular}
+\newjfontfamily\FANGSONG{AdobeFangsongStd-Regular}
+
+\usepackage{interfaces-LaTeX}
+\changefont{linespread=1.2}
+
+\usepackage[top=1.2in,bottom=1.2in,left=1.5in,right=1in]{geometry}
+\pdfpagewidth=\paperwidth
+\pdfpageheight=\paperheight
+
+\usepackage{color}
+\usepackage[table]{xcolor}
+
+\definecolor{hyperreflinkred}{RGB}{128,23,31}
+\hypersetup{
+  unicode,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=0,
+  breaklinks=true,
+  colorlinks=true,
+  allcolors=hyperreflinkred,
+  linktoc=page,
+  plainpages=false,
+  pdfpagelabels=true,
+  pdfstartview={XYZ null null 1}
+}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\usepackage{titlesec,titletoc}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\usepackage{enumitem}
+\setlist{noitemsep,partopsep=0pt,topsep=.8ex}
+\setlist[1]{labelindent=\parindent}
+\setlist[enumerate,1]{label=\arabic*.,ref=\arabic*}
+\setlist[enumerate,2]{label*=\arabic*,ref=\theenumi.\arabic*}
+\setlist[enumerate,3]{label=\emph{\alph*}),ref=\theenumii\emph{\alph*}}
+
+\usepackage{listings}
+\definecolor{lstgreen}{rgb}{0,0.6,0}
+\definecolor{lstgray}{rgb}{0.5,0.5,0.5}
+\definecolor{lstmauve}{rgb}{0.58,0,0.82}
+\lstset{
+  basicstyle=\footnotesize\ttfamily\FANGSONG,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{lstgreen}\itshape\KAI,
+  stringstyle=\color{lstmauve},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  numbers=left,
+  numberstyle=\tiny\color{lstgray},
+  frame=lines,
+  rulecolor=\color{black},
+  breaklines=true
+}
+
+\AtBeginEnvironment{verbatim}{\small}
+\let\AltMacroFont\MacroFont
+
+\usepackage{metalogo}
+\usepackage{notes}
+\usepackage{tabularx}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecindent}{2em}
+\setlength{\cftsubsecindent}{4em}
+\makeatletter
+\newskip\ITEC@oldcftbeforepartskip
+\ITEC@oldcftbeforepartskip=\cftbeforepartskip
+\newskip\ITEC@oldcftbeforesecskip
+\ITEC@oldcftbeforesecskip=\cftbeforesecskip
+\let\ITEC@oldl@part\l@part
+\let\ITEC@oldl@section\l@section
+\let\ITEC@oldl@subsection\l@subsection
+\def\l@part#1#2{\ITEC@oldl@part{#1}{#2}\cftbeforepartskip=3pt}
+\def\l@section#1#2{\ITEC@oldl@section{#1}{#2}\cftbeforepartskip=\ITEC@oldcftbeforepartskip\cftbeforesecskip=3pt}
+\def\l@subsection#1#2{\ITEC@oldl@subsection{#1}{#2}\cftbeforesecskip=\ITEC@oldcftbeforesecskip}
+\makeatother
+
+\titleformat{\part}
+  {
+    \bfseries           
+    \centering               
+    \changefont{size=18pt}  
+  }
+  {\thepart}
+  {1em}
+  {}
+\let\oldpart\part
+\def\part#1{\newpage\oldpart{#1}}
+
+\def\orvar{\textnormal{|}}
+
+\IndexPrologue
+ {
+  \part{Index}
+  The~italic~numbers~denote~the~pages~where~the~
+  corresponding~entry~is~described,~
+  numbers~underlined~point~to~the~definition,~
+  all~others~indicate~the~places~where~it~is~used.
+ }
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\def\email#1{
+  \href{mailto:#1}{\texttt{#1}}
+}
+
+\usepackage{xparse}
+\ExplSyntaxOn
+\DeclareDocumentCommand\pkgurl{o m}
+{
+    \IfNoValueTF{#1}
+    {
+        \href
+        {
+        http://mirrors.ctan.org/help/Catalogue/entries/
+        \tl_expandable_lowercase:n {#2} .html
+        }
+        { \textsf{#2} }
+    }
+    {
+        \href
+        {
+        http://mirrors.ctan.org/help/Catalogue/entries/
+        \tl_expandable_lowercase:n {#1} .html
+        }
+        { \textsf{#2} }
+    }
+}
+\ExplSyntaxOff
+
+\begin{document}
+\DocInput{hustreport.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \iffalse
+%<*!(example-bib)>
+% \fi
+%% \CharacterTable
+%% {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%  Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%  Digits        \0\1\2\3\4\5\6\7\8\9
+%%  Exclamation   \!     Double quote  \"     Hash (number) \#
+%%  Dollar        \$     Percent       \%     Ampersand     \&
+%%  Acute accent  \'     Left paren    \(     Right paren   \)
+%%  Asterisk      \*     Plus          \+     Comma         \,
+%%  Minus         \-     Point         \.     Solidus       \/
+%%  Colon         \:     Semicolon     \;     Less than     \<
+%%  Equals        \=     Greater than  \>     Question mark \?
+%%  Commercial at \@     Left bracket  \[     Backslash     \\
+%%  Right bracket \]     Circumflex    \^     Underscore    \_
+%%  Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%  Right brace   \}     Tilde         \~}
+% \iffalse
+%</!(example-bib)>
+% \fi
+%
+% \changes{v1.0}{2013/07/01}{Initial version}
+%
+% \GetFileInfo{hustreport.dtx}
+%
+% \DoNotIndex{\#,\$,\%,\&,\@,\\,\{,\},\^,\_,\~,\ ,\,}
+% \DoNotIndex{\def,\if,\else,\fi,\gdef,\long,\let}
+% \DoNotIndex{\@ne,\@nil}
+% \DoNotIndex{\begingroup,\endgroup,\advance}
+% \DoNotIndex{\newcommand,\renewcommand}
+% \DoNotIndex{\newenvironment,\renewenvironment}
+% \DoNotIndex{\RequirePackage}
+%
+% \title{A Report Template for Huazhong University of Science and Technology: the \textsf{hustreport} class
+% \thanks{This document corresponds to \textsf{hustreport.cls}~\fileversion, dated \filedate.}}
+% \author{Xu Cheng \\ \email{xucheng@me.com}}
+% \date{2013/07/01}
+%
+% \begingroup
+% \hypersetup{allcolors=black}
+% \maketitle
+% \endgroup
+% \tableofcontents
+%
+% \part{Introduction}
+%
+% \part{中文使用说明}\label{part:中文使用说明}
+%
+% \part{English Version Instruction}\label{part:English Version Instruction}
+%
+% \StopEventually{
+%  \PrintIndex
+% }
+%
+% \part{Implementation}\label{part:Implementation}
+%
+%    \begin{macrocode}
+%<*class>
+\RequirePackage{ifthen}
+%    \end{macrocode}
+%
+%
+%    \begin{macrocode}
+%</class>
+%    \end{macrocode}
+%
+% \endgroup
+% \Finale
+% ^^A Other files
+% \iffalse
+%
+%<*example-zh|example-en>
+%</example-zh|example-en>
+%
+%<*example-bib>
+@BOOK{TEXGURU99,
+  AUTHOR        = "{\TeX}Guru",
+  TITLE         = "{\LaTeXe} Manual",
+  YEAR          = "1999"
+}
+
+@BOOK{knuth,
+  AUTHOR        = "{Donald E. Knuth}",
+  TITLE         = "The \TeX{}book",
+  publisher     = "Addison–Wesley Pub. Co.",
+  address       = "MA",
+  YEAR          = "1984"
+}
+%</example-bib>
+%
+% \fi
+%
+\endinput
