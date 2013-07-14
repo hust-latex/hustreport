@@ -193,7 +193,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{1424}
+% \CheckSum{1428}
 %
 % \iffalse
 %<*!(example-bib)>
@@ -356,8 +356,8 @@
 %     \verb+literature-survey+ & 文献综述 & Literature Survey \\ \hline
 %     \verb+thesis-proposal+ & 选题 & Thesis Proposal \\ \hline
 %     \verb+academic-report+ & 学术报告 & Academic Report \\ \hline
-%     \verb+midterm-progress+ & 论文中期进展 & Midterm Progress \\ \hline
-%     \verb+practice+ & 实践环节 & Practice \\ \hline
+%     \verb+midterm-progress+ & 论文中期进展 & Midterm Progress Report \\ \hline
+%     \verb+practice+ & 实践环节 & Practice Report\\ \hline
 %     \end{tabularx}
 % \end{table} 
 %
@@ -708,8 +708,8 @@
 %     \verb+literature-survey+ & 文献综述 & Literature Survey \\ \hline
 %     \verb+thesis-proposal+ & 选题 & Thesis Proposal \\ \hline
 %     \verb+academic-report+ & 学术报告 & Academic Report \\ \hline
-%     \verb+midterm-progress+ & 论文中期进展 & Midterm Progress \\ \hline
-%     \verb+practice+ & 实践环节 & Practice \\ \hline
+%     \verb+midterm-progress+ & 论文中期进展 & Midterm Progress Report\\ \hline
+%     \verb+practice+ & 实践环节 & Practice Report\\ \hline
 %     \end{tabularx}
 % \end{table} 
 %
@@ -1492,18 +1492,22 @@
 \ifthenelse{\equal{\HUST@category}{midterm-progress}}{
   \ifthenelse{\equal{\HUST@language}{chinese}}
   {\categoryname{论文中期进展}}
-  {\categoryname{Midterm Progress}}
+  {\categoryname{Midterm Progress Report}}
 }{}
 \ifthenelse{\equal{\HUST@category}{practice}}{
   \ifthenelse{\equal{\HUST@language}{chinese}}
   {\categoryname{实践环节}}
-  {\categoryname{Practice}}
+  {\categoryname{Practice Report}}
 }{}
 
 \ifthenelse{\equal{\HUST@language}{chinese}}{
   \hypersetup{pdfsubject={研究生{\HUST@categoryname}报告}}
 }{
-  \hypersetup{pdfsubject={Postgraduate~\HUST@categoryname~Report}}
+  \ifthenelse{\equal{\HUST@categoryname}{}}{
+    \hypersetup{pdfsubject={Postgraduate~Report}}
+  }{
+    \hypersetup{pdfsubject={Postgraduate~\HUST@categoryname}}
+  }
 }
 %    \end{macrocode}
 %
@@ -1920,7 +1924,7 @@
     \ifthenelse{\equal{\HUST@categoryname}{}}{
       Postgraduate~\hspace{6em}~Report
     }{
-      Postgraduate~\HUST@categoryname~Report
+      Postgraduate~\HUST@categoryname
     }
   }
   \vskip 0.8cm
