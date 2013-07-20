@@ -63,5 +63,7 @@ reallyclean:
 			*.pyg *.snm *.synctex.gz *.thm *.toc \
 			*.vrb *.xdy *.tdo \
 			*.cls *.tex *.md *.bib hustreport*.pdf
+checksum:FORCE
+	perl adjust_checksum.pl hustreport.dtx
 
 .PHONY:all unpack class doc example example-zh example-en clean reallyclean FORCE
