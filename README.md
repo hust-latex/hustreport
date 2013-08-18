@@ -2,11 +2,11 @@ hustreport
 ==========
 
 
->   中文版[点击这里](https://github.com/michael911009/hustreport/blob/master/README.zh-cn.md)。
+>   中文版[点击这里](https://github.com/xu-cheng/hustreport/blob/master/README.zh-cn.md)。
 
 An Unofficial Graduate Report Template in LaTeX for [Huazhong University of Science and Technology](http://www.hust.edu.cn). This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-This project is part of [hust-latex-template](https://github.com/michael911009/hust-latex-template).
+This project is part of [hust-latex-template](https://github.com/xu-cheng/hust-latex-template).
 
 If this template is useful for you, you might want to buy me a cup of coffee to keep me fresh. Thanks! :)
 
@@ -63,8 +63,8 @@ Then copy following files from directory `hustreport` into your TeX project root
 
 **Important : This template can only be compiled by XeLaTeX or LuaLaTeX[Recommend].**
 
-* Manual: See [hustreport.pdf](https://github.com/michael911009/hustreport/raw/master/hustreport/hustreport.pdf).
-* Example: See [hustreport-zh-example.pdf](https://github.com/michael911009/hustreport/raw/master/hustreport/hustreport-zh-example.pdf) and [hustreport-en-example.pdf](https://github.com/michael911009/hustreport/raw/master/hustreport/hustreport-en-example.pdf).
+* Manual: See [hustreport.pdf](https://github.com/xu-cheng/hustreport/raw/master/hustreport/hustreport.pdf).
+* Example: See [hustreport-zh-example.pdf](https://github.com/xu-cheng/hustreport/raw/master/hustreport/hustreport-zh-example.pdf) and [hustreport-en-example.pdf](https://github.com/xu-cheng/hustreport/raw/master/hustreport/hustreport-en-example.pdf).
 
 ## License
 
