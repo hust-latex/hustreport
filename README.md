@@ -88,3 +88,6 @@ This work consists of the files hustreport.dtx,
 hustreport.ins and the derived file hustreport.cls 
 along with its documnet and example files.
 ```
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/xu-cheng/hustreport/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
