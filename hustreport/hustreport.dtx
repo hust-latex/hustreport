@@ -193,7 +193,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{1429}
+% \CheckSum{1441}
 %
 % \iffalse
 %<*!(example-bib)>
@@ -2059,9 +2059,12 @@
 %    \begin{macrocode}
 \def\HUST@zhabstractpage{
   \chapter*{\HUST@zhabstractname}
+  \begingroup
+  \changefont{size=10.5pt}
   \HUST@zhabstract \par
   \vskip 1.2ex
   \noindent\hei{\HUST@zhkeywordstitle}\hspace{.8em} \HUST@zhkeywords
+  \endgroup
 }
 %    \end{macrocode}
 %
@@ -2069,9 +2072,12 @@
 %    \begin{macrocode}
 \def\HUST@enabstractpage{
   \chapter*{\textsf{\HUST@enabstractname}}
+  \begingroup
+  \changefont{size=10.5pt}
   \HUST@enabstract \par
   \vskip 1.2ex
   \noindent\textbf{\HUST@enkeywordstitle}\hspace{.8em} \HUST@enkeywords
+  \endgroup
 }
 %    \end{macrocode}
 %
@@ -2122,7 +2128,7 @@
   \addcontentsline{toc}{chapter}{\HUST@acknamenospace}
   \chapter*{\HUST@ackname}
   \begingroup
-  \normalsize
+  \changefont{size=10.5pt}
 }{
   \endgroup
 }
@@ -2141,7 +2147,8 @@
     \addcontentsline{toc}{chapter}{\HUST@publicationtitle}
     \chapter*{\HUST@publicationtitle}
   \fi
-  \begin{enumerate}[labelindent=0pt,label={[\arabic*]}]
+  \begin{enumerate}[labelindent=0pt,label={[\arabic*]},itemsep=0.5ex]
+  \changefont{size=10.5pt,linespread=1}
 }{
   \end{enumerate}
 }
@@ -2164,11 +2171,15 @@
   \clearpage
   \phantomsection
   \addcontentsline{toc}{chapter}{\bibname}
+  \begingroup
+  \changefont{size=10.5pt,linespread=1}
+  \setlength\bibsep{0.5ex} 
   \ifthenelse{\equal{\HUST@language}{chinese}}{
     \HUST@bibliography{#1}
   }{
     \HUST@bibliography{IEEEabrv,#1}
   }
+  \endgroup
 }
 %    \end{macrocode}
 % \end{macro}
