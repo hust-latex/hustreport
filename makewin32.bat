@@ -50,7 +50,7 @@ call :example-zh
 call :example-en
 goto :exit
 
-example-zh:
+:example-zh
 call :unpack
 pushd hustreport
 lualatex -shell-escape -8bit hustreport-zh-example
@@ -60,7 +60,7 @@ lualatex -shell-escape -8bit hustreport-zh-example
 popd
 goto :exit
 
-example-en:
+:example-en
 call :unpack
 pushd hustreport
 lualatex -shell-escape -8bit hustreport-en-example
