@@ -73,8 +73,7 @@ goto :exit
 :doc
 pushd hustreport
 lualatex -shell-escape -8bit hustreport.dtx
-makeindex -q -s l3doc.ist hustreport
-makeindex -s l3doc.ist  -o hustreport.ind hustreport.idx
+makeindex -s gind.ist  -o hustreport.ind hustreport.idx
 lualatex -shell-escape -8bit hustreport.dtx
 lualatex -shell-escape -8bit hustreport.dtx
 popd
