@@ -50,12 +50,11 @@
 \newjfontfamily\KAI{AdobeKaitiStd-Regular}
 \newjfontfamily\FANGSONG{AdobeFangsongStd-Regular}
 
-\usepackage{interfaces-LaTeX}
-\changefont{linespread=1.2}
+\linespread{1.2}\selectfont
 
 \usepackage[top=1.2in,bottom=1.2in,left=1.5in,right=1in]{geometry}
-\pdfpagewidth=\paperwidth
-\pdfpageheight=\paperheight
+\pagewidth=\paperwidth
+\pageheight=\paperheight
 
 \usepackage{color}
 \usepackage[table]{xcolor}
@@ -137,7 +136,7 @@
   {
     \bfseries
     \centering
-    \changefont{size=18pt}
+    \fontsize{18pt}{23.4pt}\selectfont
   }
   {\thepart}
   {1em}
@@ -173,7 +172,7 @@
         \href
         {
         http://mirrors.ctan.org/help/Catalogue/entries/
-        \tl_expandable_lowercase:n {#2} .html
+        \str_fold_case:n {#2} .html
         }
         { \textsf{#2} }
     }
@@ -181,7 +180,7 @@
         \href
         {
         http://mirrors.ctan.org/help/Catalogue/entries/
-        \tl_expandable_lowercase:n {#1} .html
+        \str_fold_case:n {#1} .html
         }
         { \textsf{#2} }
     }
@@ -579,7 +578,6 @@
 %     \item \pkgurl{multirow} 用于表格中合并行。
 %     \item \pkgurl{overpic} 用于在图片上层叠其他内容。
 %     \item \pkgurl{tabularx} 扩展到表格环境。
-%     \item \pkgurl[xypic]{xy-pic} 用于绘制简单图形。如需更高级功能可以使用\pkgurl[pgf]{tikz}宏包。
 %     \item \pkgurl{zhnumber} 用于生成中文数字。
 % \end{itemize}
 %
@@ -930,7 +928,6 @@
 %     \item \pkgurl{multirow} Combine multi-rows in table.
 %     \item \pkgurl{overpic} Put something over a picture,
 %     \item \pkgurl{tabularx} A better table environment.
-%     \item \pkgurl[xypic]{xy-pic} To draw some picture. If you need more advanced features, use the package \pkgurl[pgf]{tikz}.
 % \end{itemize}
 %
 % \StopEventually{
@@ -1198,10 +1195,9 @@
 %    \end{macrocode}
 %
 % \section{Basic Format}
-% Use \pkgurl{interfaces} package to handle font size and line spread. We set global line spread to 1.3.
+% We set global line spread to 1.3.
 %    \begin{macrocode}
-\RequirePackage{interfaces-LaTeX}
-\changefont{linespread=1.3}
+\linespread{1.3}\selectfont
 %    \end{macrocode}
 %
 % Use \pkgurl{geometry} package to handle paper page.
@@ -1214,8 +1210,8 @@
   right=1in,
   includefoot
 }
-\pdfpagewidth=\paperwidth
-\pdfpageheight=\paperheight
+\pagewidth=\paperwidth
+\pageheight=\paperheight
 %    \end{macrocode}
 %
 % Indent of paragraph and skip between paragraphs.
@@ -1261,7 +1257,6 @@
 %
 % Load packages for picture.
 %    \begin{macrocode}
-\RequirePackage[all]{xy}
 \RequirePackage{overpic}
 \RequirePackage{graphicx,caption,subcaption}
 %    \end{macrocode}
@@ -1651,17 +1646,17 @@
 %    \begin{macrocode}
 \AtBeginEnvironment{tabular}{
   \ifHUST@useoldtabular\else
-    \changefont{size=11pt,linespread=1.4}
+    \fontsize{11pt}{15.4pt}\selectfont
   \fi
 }
 \AtBeginEnvironment{tabularx}{
   \ifHUST@useoldtabular\else
-    \changefont{size=11pt,linespread=1.4}
+    \fontsize{11pt}{15.4pt}\selectfont
   \fi
 }
 \AtBeginEnvironment{longtable}{
   \ifHUST@useoldtabular\else
-    \changefont{size=11pt,linespread=1.4}
+    \fontsize{11pt}{15.4pt}\selectfont
   \fi
 }
 %    \end{macrocode}
@@ -1669,7 +1664,7 @@
 % \subsection{Caption Style}
 % Set caption font size as 11pt, use hang format, remove `:' after number and set the skip between context as 12pt.
 %    \begin{macrocode}
-\DeclareCaptionFont{HUST@captionfont}{\changefont{size=11pt}}
+\DeclareCaptionFont{HUST@captionfont}{\fontsize{11pt}{14.3pt}\selectfont}
 \DeclareCaptionLabelFormat{HUST@caplabel}{#1~#2}
 \captionsetup{
   font=HUST@captionfont,
@@ -1692,7 +1687,7 @@
 \definecolor{HUST@lstmauve}{rgb}{0.58,0,0.82}
 
 \lstset{
-  basicstyle=\footnotesize\ttfamily\changefont{linespread=1}\FANGSONG,
+  basicstyle=\footnotesize\ttfamily\linespread{1}\selectfont\FANGSONG,
   keywordstyle=\color{blue}\bfseries,
   commentstyle=\color{HUST@lstgreen}\itshape\KAI,
   stringstyle=\color{HUST@lstmauve},
@@ -1720,7 +1715,7 @@
     \bfseries
     \HEI
     \centering
-    \changefont{size=18pt}
+    \fontsize{18pt}{23.4pt}\selectfont
   }
   {
     \ifthenelse{\equal{\HUST@language}{chinese}}
@@ -1734,19 +1729,19 @@
 %
 % Section tilte format and spacing setting.
 %    \begin{macrocode}
-\titleformat*{\section}{\bfseries\HEI\changefont{size=16pt}}
+\titleformat*{\section}{\bfseries\HEI\fontsize{16pt}{20.8pt}\selectfont}
 \titlespacing*{\section}{0pt}{18pt}{6pt}
 %    \end{macrocode}
 %
 % Subsection tilte format and spacing setting.
 %    \begin{macrocode}
-\titleformat*{\subsection}{\bfseries\HEI\changefont{size=14pt}}
+\titleformat*{\subsection}{\bfseries\HEI\fontsize{14pt}{18.2pt}\selectfont}
 \titlespacing*{\subsection}{0pt}{12pt}{6pt}
 %    \end{macrocode}
 %
 % Subsubsection tilte format and spacing setting.
 %    \begin{macrocode}
-\titleformat*{\subsubsection}{\bfseries\HEI\changefont{size=13pt}}
+\titleformat*{\subsubsection}{\bfseries\HEI\fontsize{13pt}{16.9pt}\selectfont}
 \titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
 %    \end{macrocode}
 %
@@ -1805,7 +1800,7 @@
     \fancyfoot[C]{\thepage}
   \else
     \fancyhead[C]{
-      \hei{\changefont{size=14pt}\HUST@headcontent}
+      \hei{\fontsize{14pt}{18.2pt}\selectfont\HUST@headcontent}
       \vskip 0.3\normalbaselineskip
       \hrule width \textwidth height 0.4pt
     }
@@ -1863,7 +1858,7 @@
   \includegraphics[width=.5\textwidth]{hust-title.pdf} \\[0.8cm]
   \parbox[t][][t]{\textwidth}{
     \centering
-    \changefont{size=22pt,linespread=1.5}
+    \fontsize{22pt}{33.0pt}\selectfont
     \HEI
     \ifthenelse{\equal{\HUST@categoryname}{}}{
       \ziju{8pt}{研究生（ ~\hspace{6em}~）报告}
@@ -1874,7 +1869,7 @@
   \vskip 0.8cm
   \parbox[t][][t]{\textwidth}{
     \centering
-    \changefont{size=18pt,linespread=1.5}
+    \fontsize{18pt}{27.0pt}\selectfont
     \ifthenelse{\equal{\HUST@title}{}}{
       \hei{题目：~\hspace{13em}}
     }{
@@ -1885,7 +1880,7 @@
   \parbox[t][][t]{\textwidth}{
     \centering
     \TurnOffTabFontSetting
-    \changefont{size=16pt,linespread=1.5}
+    \fontsize{16pt}{24.0pt}\selectfont
     \begin{tabular}{p{6em}@{\hspace{1em}}l}
       {{学}\hfill{号}} & \makebox[10em][l]{\rule[-2.0pt]{10em}{1pt}\hspace{-10em}\hfill\HUST@stuno\hfill} \\[2ex]
       {{姓}\hfill{名}} & \makebox[10em][l]{\rule[-2.0pt]{10em}{1pt}\hspace{-10em}\hfill\HUST@author\hfill} \\[2ex]
@@ -1898,7 +1893,7 @@
   \vskip 2cm
   \parbox[t][][t]{\textwidth}{
     \centering
-    \changefont{size=16pt,linespread=1.5}
+    \fontsize{16pt}{24.0pt}\selectfont
     {华中科技大学研究生院制}
   }
   \end{center}
@@ -1912,14 +1907,14 @@
   \null\vskip 1cm
   \parbox[t][][t]{\textwidth}{
     \centering
-    \changefont{size=20pt,linespread=1.5}
+    \fontsize{20pt}{30.0pt}\selectfont
     \scshape
     Huazhong University of Science and Technology
   }
   \vskip 0.8cm
   \parbox[t][][t]{\textwidth}{
     \centering
-    \changefont{size=20pt,linespread=1.5}
+    \fontsize{20pt}{30.0pt}\selectfont
     \scshape
     \ifthenelse{\equal{\HUST@categoryname}{}}{
       Postgraduate~\hspace{6em}~Report
@@ -1930,7 +1925,7 @@
   \vskip 0.8cm
   \parbox[t][][t]{\textwidth}{
     \centering
-    \changefont{size=18pt,linespread=1.5}
+    \fontsize{18pt}{27.0pt}\selectfont
     \bfseries
     \ifthenelse{\equal{\HUST@title}{}}{
       Title:~\hspace{13em}
@@ -1942,7 +1937,7 @@
   \parbox[t][][t]{\textwidth}{
     \centering
     \TurnOffTabFontSetting
-    \changefont{size=16pt,linespread=1.5}
+    \fontsize{16pt}{24.0pt}\selectfont
     \begin{tabular}{p{5em}@{~}l}
       {Student ID} & \makebox[16em][l]{\rule[-2.0pt]{16em}{1pt}\hspace{-16em}\hfill\HUST@stuno\hfill} \\[2ex]
       {Name} & \makebox[16em][l]{\rule[-2.0pt]{16em}{1pt}\hspace{-16em}\hfill\HUST@author\hfill} \\[2ex]
@@ -1955,7 +1950,7 @@
   \vskip 2cm
   \parbox[t][][t]{\textwidth}{
     \centering
-    \changefont{size=16pt,linespread=1.5}
+    \fontsize{16pt}{24.0pt}\selectfont
     Graduate School\\
     Huazhong University of Science~\char38~Technology
   }
@@ -1968,11 +1963,11 @@
 \def\HUST@zhnotepage{
   \null\vskip 1cm
   \begin{center}
-    \ziju{1em}{\hei{\changefont{size=18pt,linespread=1.5}填表注意事项}}
+    \ziju{1em}{\hei{\fontsize{18pt}{27.0pt}\selectfont填表注意事项}}
   \end{center}
   \vskip 1.2ex
   \begingroup
-  \changefont{size=14pt,linespread=1.5}
+  \fontsize{14pt}{21.0pt}\selectfont
   \ifthenelse{\equal{\HUST@category}{practice}}{
     \begin{enumerate}
       \renewcommand{\labelenumi}{\zhnumber{\theenumi}、}
@@ -1999,11 +1994,11 @@
 \def\HUST@ennotepage{
   \null\vskip 1cm
   \begin{center}
-    \textbf{\changefont{size=18pt,linespread=1.5}Note}
+    \textbf{\fontsize{18pt}{27.0pt}\selectfontNote}
   \end{center}
   \vskip 1.2ex
   \begingroup
-  \changefont{size=14pt,linespread=1.5}
+  \fontsize{14pt}{21.0pt}\selectfont
   \ifthenelse{\equal{\HUST@category}{practice}}{
     \begin{enumerate}
       \item This form is applicable for master student's practice report, literature survey and thesis proposal.
@@ -2060,7 +2055,7 @@
 \def\HUST@zhabstractpage{
   \chapter*{\HUST@zhabstractname}
   \begingroup
-  \changefont{size=10.5pt}
+  \fontsize{10.5pt}{13.7pt}\selectfont
   \HUST@zhabstract \par
   \vskip 1.2ex
   \noindent\hei{\HUST@zhkeywordstitle}\hspace{.8em} \HUST@zhkeywords
@@ -2073,7 +2068,7 @@
 \def\HUST@enabstractpage{
   \chapter*{\textsf{\HUST@enabstractname}}
   \begingroup
-  \changefont{size=10.5pt}
+  \fontsize{10.5pt}{13.7pt}\selectfont
   \HUST@enabstract \par
   \vskip 1.2ex
   \noindent\textbf{\HUST@enkeywordstitle}\hspace{.8em} \HUST@enkeywords
@@ -2128,7 +2123,7 @@
   \addcontentsline{toc}{chapter}{\HUST@acknamenospace}
   \chapter*{\HUST@ackname}
   \begingroup
-  \changefont{size=10.5pt}
+  \fontsize{10.5pt}{13.7pt}\selectfont
 }{
   \endgroup
 }
@@ -2148,7 +2143,7 @@
     \chapter*{\HUST@publicationtitle}
   \fi
   \begin{enumerate}[labelindent=0pt,label={[\arabic*]},itemsep=0.5ex]
-  \changefont{size=10.5pt,linespread=1}
+  \fontsize{10.5pt}{10.5pt}\selectfont
 }{
   \end{enumerate}
 }
@@ -2172,7 +2167,7 @@
   \phantomsection
   \addcontentsline{toc}{chapter}{\bibname}
   \begingroup
-  \changefont{size=10.5pt,linespread=1}
+  \fontsize{10.5pt}{10.5pt}\selectfont
   \setlength\bibsep{0.5ex}
   \ifthenelse{\equal{\HUST@language}{chinese}}{
     \HUST@bibliography{#1}
@@ -2204,7 +2199,7 @@
   {
     \bfseries\HEI
     \centering
-    \changefont{size=18pt}
+    \fontsize{18pt}{23.4pt}\selectfont
   }
   {\appendixname\,\thechapter}
   {1em}
@@ -2275,31 +2270,31 @@
   \ifthenelse{\equal{\HUST@category}{practice}}{
     \ifthenelse{\equal{\HUST@language}{chinese}}{
       \begin{center}
-        \ziju{1em}{\hei{\changefont{size=18pt,linespread=1.5}导师评语}}
+        \ziju{1em}{\hei{\fontsize{18pt}{27.0pt}\selectfont导师评语}}
       \end{center}
       \vskip 1.5cm
       实践是专业硕士学位的重要环节，是一门必修课，8个学分，对于专业学位实践报告，要求字数5000以上，内容包括但不限于：参加实践的具体内容、完成的工作、收获和体会等，格式自定，但封面和封底需用“研究生实践环节报告”。
       \vfill
       \begin{flushleft}
-      \changefont{size=16pt,linespread=1.5}\HEI 导师评分：
+      \fontsize{16pt}{24.0pt}\selectfont\HEI 导师评分：
       \end{flushleft}
       \vskip 2cm
     }{
       \begin{center}
-        \textbf{\changefont{size=18pt,linespread=1.5}Advisor Reviews}
+        \textbf{\fontsize{18pt}{27.0pt}\selectfontAdvisor Reviews}
       \end{center}
       \vskip 6ex
       Practice is an important part of a master's degree. It's a required course with eight credits. The practice report requires more than 5000 words. The content can be including but not limited to: the specific content during the participation in practice, the work which has been done, the harvesting or the experience. The format is not set, but the font and back cover are required from ``graduate practice report''.
       \vfill
       \begin{flushleft}
-      \textbf{\changefont{size=16pt,linespread=1.5}Score:}
+      \textbf{\fontsize{16pt}{24.0pt}\selectfontScore:}
       \end{flushleft}
       \vskip 2cm
     }
   }{\null\vfill}
   \begin{flushleft}
     \TurnOffTabFontSetting
-    \changefont{size=16pt,linespread=1.5}
+    \fontsize{16pt}{24.0pt}\selectfont
     \bfseries
     \begin{tabular}{p{8em}@{\hspace{1em}}l}
     \ifthenelse{\equal{\HUST@language}{chinese}}{研究生签字}{Student Signature}
@@ -2313,7 +2308,7 @@
   \end{flushleft}
   \vskip 2cm
   \begin{flushright}
-    \changefont{size=16pt,linespread=1.5}
+    \fontsize{16pt}{24.0pt}\selectfont
     \bfseries
     \ifthenelse{\equal{\HUST@language}{chinese}}{\hspace{2em}年\hspace{2em}月\hspace{2em}日}{Date:\hspace{8em}}
   \end{flushright}
