@@ -31,7 +31,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<class>\ProvidesClass{hustreport}
 %<*class>
-[2013/07/01 v1.0 A Report Template for Huazhong University of Science and Technology]
+[2016/06/01 v1.1 A Report Template for Huazhong University of Science and Technology]
 %</class>
 %
 %<*driver>
@@ -193,7 +193,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{1441}
+% \CheckSum{1475}
 %
 % \iffalse
 %<*!(example-bib)>
@@ -218,6 +218,7 @@
 % \fi
 %
 % \changes{v1.0}{2013/07/01}{Initial version}
+% \changes{v1.1}{2016/06/01}{Fix for TeXLive 2016. Remove \texttt{interfaces} and other problematic package}
 %
 % \GetFileInfo{hustreport.dtx}
 %
@@ -1963,7 +1964,7 @@
 \def\HUST@zhnotepage{
   \null\vskip 1cm
   \begin{center}
-    \ziju{1em}{\hei{\fontsize{18pt}{27.0pt}\selectfont填表注意事项}}
+    \ziju{1em}{\hei{\fontsize{18pt}{27.0pt}\selectfont 填表注意事项}}
   \end{center}
   \vskip 1.2ex
   \begingroup
@@ -1994,7 +1995,7 @@
 \def\HUST@ennotepage{
   \null\vskip 1cm
   \begin{center}
-    \textbf{\fontsize{18pt}{27.0pt}\selectfontNote}
+    \textbf{\fontsize{18pt}{27.0pt}\selectfont Note}
   \end{center}
   \vskip 1.2ex
   \begingroup
@@ -2151,13 +2152,13 @@
 % \end{environment}
 %
 % \begin{macro}{\bibliography}
-% A command to generate bibliography page. We use \textsf{thubib.bst} in \pkgurl{thuthesis} to typeset bibliography in Chinese language mode. And use \pkgurl{IEEEtran} in English language mode.
+% A command to generate bibliography page. We use \textsf{thuthesis.bst} in \pkgurl{thuthesis} to typeset bibliography in Chinese language mode. And use \pkgurl{IEEEtran} in English language mode.
 %    \begin{macrocode}
 \ifthenelse{\equal{\HUST@language}{chinese}}{
   \def\thudot{\unskip.}
   \def\thumasterbib{[Master Thesis]}
   \def\thuphdbib{[Doctor Thesis]}
-  \bibliographystyle{thubib}
+  \bibliographystyle{thuthesis}
 }{
   \bibliographystyle{IEEEtran}
 }
@@ -2270,7 +2271,7 @@
   \ifthenelse{\equal{\HUST@category}{practice}}{
     \ifthenelse{\equal{\HUST@language}{chinese}}{
       \begin{center}
-        \ziju{1em}{\hei{\fontsize{18pt}{27.0pt}\selectfont导师评语}}
+        \ziju{1em}{\hei{\fontsize{18pt}{27.0pt}\selectfont 导师评语}}
       \end{center}
       \vskip 1.5cm
       实践是专业硕士学位的重要环节，是一门必修课，8个学分，对于专业学位实践报告，要求字数5000以上，内容包括但不限于：参加实践的具体内容、完成的工作、收获和体会等，格式自定，但封面和封底需用“研究生实践环节报告”。
@@ -2281,13 +2282,13 @@
       \vskip 2cm
     }{
       \begin{center}
-        \textbf{\fontsize{18pt}{27.0pt}\selectfontAdvisor Reviews}
+        \textbf{\fontsize{18pt}{27.0pt}\selectfont Advisor Reviews}
       \end{center}
       \vskip 6ex
       Practice is an important part of a master's degree. It's a required course with eight credits. The practice report requires more than 5000 words. The content can be including but not limited to: the specific content during the participation in practice, the work which has been done, the harvesting or the experience. The format is not set, but the font and back cover are required from ``graduate practice report''.
       \vfill
       \begin{flushleft}
-      \textbf{\fontsize{16pt}{24.0pt}\selectfontScore:}
+      \textbf{\fontsize{16pt}{24.0pt}\selectfont Score:}
       \end{flushleft}
       \vskip 2cm
     }
