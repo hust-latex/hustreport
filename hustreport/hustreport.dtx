@@ -2158,13 +2158,13 @@
 % \end{environment}
 %
 % \begin{macro}{\bibliography}
-% A command to generate bibliography page. We use \textsf{thuthesis.bst} in \pkgurl{thuthesis} to typeset bibliography in Chinese language mode. And use \pkgurl{IEEEtran} in English language mode.
+% A command to generate bibliography page. We use \textsf{thuthesis-numeric.bst} in \pkgurl{thuthesis} to typeset bibliography in Chinese language mode. And use \pkgurl{IEEEtran} in English language mode.
 %    \begin{macrocode}
 \ifthenelse{\equal{\HUST@language}{chinese}}{
   \def\thudot{\unskip.}
   \def\thumasterbib{[Master Thesis]}
   \def\thuphdbib{[Doctor Thesis]}
-  \bibliographystyle{thuthesis}
+  \bibliographystyle{thuthesis-numeric}
 }{
   \bibliographystyle{IEEEtran}
 }
